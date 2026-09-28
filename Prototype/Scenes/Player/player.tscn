@@ -111,7 +111,8 @@ animation = &"run"
 flip_h = true
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." unique_id=281410586]
-polygon = PackedVector2Array(4, 21, 26, 21, 26, 28, 4, 28)
+position = Vector2(15, 24.5)
+polygon = PackedVector2Array(-11, -3.5, 11, -3.5, 11, 3.5, -11, 3.5)
 
 [node name="ProgressBar" type="ProgressBar" parent="." unique_id=1220521091]
 offset_left = -5.0
@@ -123,3 +124,12 @@ theme_override_styles/fill = SubResource("StyleBoxFlat_1ehrf")
 max_value = 1.0
 value = 0.5
 show_percentage = false
+
+[node name="Raycasts" type="Node2D" parent="." unique_id=264322128]
+position = Vector2(16, 24)
+
+[node name="RightWall" type="RayCast2D" parent="Raycasts" unique_id=815389863]
+target_position = Vector2(18, 0)
+
+[node name="LeftWall" type="RayCast2D" parent="Raycasts" unique_id=1201888127]
+target_position = Vector2(-18, 0)
