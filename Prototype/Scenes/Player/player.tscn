@@ -1,0 +1,125 @@
+[gd_scene format=3 uid="uid://brcjkya7r6a2t"]
+
+[ext_resource type="Script" uid="uid://bf3iddyknwu5n" path="res://Prototype/Scenes/Player/Player.gd" id="1_d3mbt"]
+[ext_resource type="Texture2D" uid="uid://cc7pm6r82t5ov" path="res://Prototype/Scenes/Player/NPC_46.png" id="2_tc3ks"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1ehrf"]
+atlas = ExtResource("2_tc3ks")
+region = Rect2(0, 0, 48, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yjuyg"]
+atlas = ExtResource("2_tc3ks")
+region = Rect2(0, 160, 48, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0y8bb"]
+atlas = ExtResource("2_tc3ks")
+region = Rect2(0, 40, 48, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0xgxv"]
+atlas = ExtResource("2_tc3ks")
+region = Rect2(0, 80, 48, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dcuir"]
+atlas = ExtResource("2_tc3ks")
+region = Rect2(0, 120, 48, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_akgs2"]
+atlas = ExtResource("2_tc3ks")
+region = Rect2(0, 200, 48, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0euxs"]
+atlas = ExtResource("2_tc3ks")
+region = Rect2(0, 240, 48, 40)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_1ay4j"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1ehrf")
+}],
+"loop": 0,
+"name": &"idle",
+"speed": 1.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yjuyg")
+}],
+"loop": 0,
+"name": &"midair",
+"speed": 1.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1ehrf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0y8bb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0xgxv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dcuir")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yjuyg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_akgs2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0euxs")
+}],
+"loop": 1,
+"name": &"run",
+"speed": 10.0
+}]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tc3ks"]
+content_margin_left = 2.0
+content_margin_top = 2.0
+content_margin_right = 2.0
+content_margin_bottom = 2.0
+bg_color = Color(2.701956, 0.7138528, 0, 0.4)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+corner_detail = 6
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1ehrf"]
+content_margin_left = 2.0
+content_margin_top = 2.0
+content_margin_right = 2.0
+content_margin_bottom = 2.0
+bg_color = Color(23.522451, 25.236422, 0, 0.4)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+corner_detail = 6
+
+[node name="Player" type="CharacterBody2D" unique_id=1727119178]
+script = ExtResource("1_d3mbt")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=930962886]
+texture_filter = 1
+position = Vector2(16, 10)
+sprite_frames = SubResource("SpriteFrames_1ay4j")
+animation = &"run"
+flip_h = true
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." unique_id=281410586]
+polygon = PackedVector2Array(4, 21, 26, 21, 26, 28, 4, 28)
+
+[node name="ProgressBar" type="ProgressBar" parent="." unique_id=1220521091]
+offset_left = -5.0
+offset_top = -8.0
+offset_right = 39.0
+offset_bottom = -4.0
+theme_override_styles/background = SubResource("StyleBoxFlat_tc3ks")
+theme_override_styles/fill = SubResource("StyleBoxFlat_1ehrf")
+max_value = 1.0
+value = 0.5
+show_percentage = false
