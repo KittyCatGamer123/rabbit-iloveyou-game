@@ -1,6 +1,6 @@
 extends Node2D
 
-var cutscene_skip = true
+var cutscene_skip = false
 
 @onready var player: Player = $Player
 @onready var player_cam: Camera2D = $Player/Camera2D
@@ -155,3 +155,6 @@ func trigger_stump1(body: Node2D) -> void:
 	message_remove()
 	create_tween().tween_property(player_cam, "offset", Vector2(60, -40), 0.5).set_ease(Tween.EASE_IN_OUT)
 	player.active_cutscene = false
+	
+	await get_tree().create_timer(1).timeout
+	explain_text_prompt("Press Space or the A button against a wall to wall-hop")

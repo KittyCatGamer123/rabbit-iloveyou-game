@@ -2,6 +2,7 @@ extends CharacterBody2D
 class_name Player
 
 var active_cutscene: bool = true
+var reset_position: Vector2
 
 @onready var anim_sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var progress_jump: ProgressBar = $ProgressBar
@@ -37,10 +38,13 @@ var walljump_flip_tween: Tween = null
 
 func _ready() -> void:
 	progress_jump.value = 0
+	reset_position = position
 
 func _physics_process(delta: float) -> void:
 	if not is_on_floor():
 		velocity += get_gravity() * delta
+		if position.y >= 630:
+			position = reset_position
 	
 	var direction := Input.get_axis("left_movement", "right_movement")
 	if active_cutscene:
