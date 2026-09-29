@@ -2,7 +2,84 @@
 
 [ext_resource type="PackedScene" uid="uid://brcjkya7r6a2t" path="res://Prototype/Scenes/Player/player.tscn" id="1_ho2te"]
 [ext_resource type="Script" uid="uid://jinjdm3uj5ss" path="res://Prototype/Scenes/PrototypeScene/prototype_scene.gd" id="1_ux0vl"]
+[ext_resource type="Texture2D" uid="uid://cc7pm6r82t5ov" path="res://Prototype/Scenes/Player/NPC_46.png" id="2_l7s2r"]
 [ext_resource type="FontFile" uid="uid://cb7d721xyd5sv" path="res://Prototype/Font/YoungSerif-Regular.ttf" id="3_mrdad"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1ehrf"]
+atlas = ExtResource("2_l7s2r")
+region = Rect2(0, 0, 48, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yjuyg"]
+atlas = ExtResource("2_l7s2r")
+region = Rect2(0, 160, 48, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0y8bb"]
+atlas = ExtResource("2_l7s2r")
+region = Rect2(0, 40, 48, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0xgxv"]
+atlas = ExtResource("2_l7s2r")
+region = Rect2(0, 80, 48, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dcuir"]
+atlas = ExtResource("2_l7s2r")
+region = Rect2(0, 120, 48, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_akgs2"]
+atlas = ExtResource("2_l7s2r")
+region = Rect2(0, 200, 48, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0euxs"]
+atlas = ExtResource("2_l7s2r")
+region = Rect2(0, 240, 48, 40)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_1ay4j"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1ehrf")
+}],
+"loop": 0,
+"name": &"idle",
+"speed": 1.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yjuyg")
+}],
+"loop": 0,
+"name": &"midair",
+"speed": 1.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1ehrf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0y8bb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0xgxv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dcuir")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yjuyg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_akgs2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0euxs")
+}],
+"loop": 1,
+"name": &"run",
+"speed": 10.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1ay4j"]
+size = Vector2(20, 333)
 
 [sub_resource type="Gradient" id="Gradient_mrdad"]
 offsets = PackedFloat32Array(0, 0.15, 0.85, 1)
@@ -39,21 +116,31 @@ script = ExtResource("1_ux0vl")
 position = Vector2(0, 96)
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Ground" unique_id=1891181285]
-polygon = PackedVector2Array(37, -280, 27, -238, 8, -196, 3, -154, -7, -119, -19, -64, -8, -37, 7, -17, 37, -9, 192, -5, 307, -9, 413, -14, 511, -12, 578, -6, 663, 2, 850, 0, 972, -8, 1037, -8, 1134, 3, 1208, 14, 1288, 8, 1288, 335, -500, 335, -500, -280)
+polygon = PackedVector2Array(37, -280, 27, -238, 8, -196, 3, -154, -7, -119, -19, -64, -8, -37, 7, -17, 37, -9, 192, -5, 307, -9, 413, -14, 511, -12, 578, -6, 663, 2, 850, 0, 972, -8, 1037, -8, 1079, -3, 1134, 3, 1182, 3, 1223, 5, 1288, 8, 1354, 0, 1442, 2, 1515, 7, 1587, 2, 1634, 7, 1699, -10, 1741, -2, 1781, -16, 1854, 2, 1920, 1, 1920, 335, -500, 335, -500, -280)
 
 [node name="Polygon2D" type="Polygon2D" parent="Ground" unique_id=1298917005]
 color = Color(0.53333336, 0.6784314, 0.53333336, 1)
-polygon = PackedVector2Array(37, -280, 27, -238, 8, -196, 3, -154, -7, -119, -19, -64, -8, -37, 7, -17, 37, -9, 192, -5, 307, -9, 413, -14, 511, -12, 578, -6, 663, 2, 850, 0, 972, -8, 1037, -8, 1134, 3, 1208, 14, 1288, 8, 1288, 335, -500, 335, -500, -280)
+polygon = PackedVector2Array(37, -280, 27, -238, 8, -196, 3, -154, -7, -119, -19, -64, -8, -37, 7, -17, 37, -9, 192, -5, 307, -9, 413, -14, 511, -12, 578, -6, 663, 2, 850, 0, 972, -8, 1037, -8, 1079, -3, 1134, 3, 1182, 3, 1223, 5, 1288, 8, 1354, 0, 1442, 2, 1515, 7, 1587, 2, 1634, 7, 1699, -10, 1741, -2, 1781, -16, 1854, 2, 1920, 1, 1920, 335, -500, 335, -500, -280)
 
-[node name="Tree" type="StaticBody2D" parent="." unique_id=44008268]
-position = Vector2(976, -32)
+[node name="Stump" type="StaticBody2D" parent="." unique_id=44008268]
+position = Vector2(1200, 0)
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Tree" unique_id=2016775846]
-polygon = PackedVector2Array(0, -150, 110, -150, 110, 139, 95, 133, 75, 147, 64, 119, 55, 156, 39, 138, 24, 125, 12, 142, 0, 120, -32, 140, -3, 109)
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Stump" unique_id=2016775846]
+polygon = PackedVector2Array(-1, 35, 111, 38, 112, 122, 117, 126, 106, 122, 101, 130, 94, 124, 82, 137, 83, 123, 69, 123, 65, 134, 58, 126, 46, 134, 41, 125, 29, 124, 29, 129, 18, 123, 12, 131, 8, 126, 1, 130, 0, 120)
 
-[node name="Polygon2D" type="Polygon2D" parent="Tree" unique_id=2140253793]
-color = Color(0.62, 0.5332, 0.2728, 1)
-polygon = PackedVector2Array(0, -150, 110, -150, 110, 139, 95, 133, 75, 147, 64, 119, 55, 156, 39, 138, 24, 125, 12, 142, 0, 120, -32, 140, -3, 109)
+[node name="Polygon2D" type="Polygon2D" parent="Stump" unique_id=2140253793]
+color = Color(0.52, 0.41808, 0.22879998, 1)
+polygon = PackedVector2Array(-1, 35, 111, 38, 112, 122, 117, 126, 106, 122, 101, 130, 94, 124, 82, 137, 83, 123, 69, 123, 65, 134, 58, 126, 46, 134, 41, 125, 29, 124, 29, 129, 18, 123, 12, 131, 8, 126, 1, 130, 0, 120)
+
+[node name="Stump2" type="StaticBody2D" parent="." unique_id=97952593]
+position = Vector2(1442, -8)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Stump2" unique_id=901445592]
+polygon = PackedVector2Array(0, -50, 110, -52, 110, 139, 95, 133, 75, 147, 64, 119, 55, 156, 39, 138, 24, 125, 12, 142, 0, 120, -32, 140, -3, 109)
+
+[node name="Polygon2D" type="Polygon2D" parent="Stump2" unique_id=268516118]
+color = Color(0.52, 0.41808, 0.22879998, 1)
+polygon = PackedVector2Array(0, -50, 110, -52, 110, 139, 95, 133, 75, 147, 64, 119, 55, 156, 39, 138, 24, 125, 12, 142, 0, 120, -32, 140, -3, 109)
 
 [node name="Player" parent="." unique_id=1727119178 node_paths=PackedStringArray("player_camera") instance=ExtResource("1_ho2te")]
 position = Vector2(55, 58)
@@ -66,6 +153,28 @@ offset = Vector2(0, -50)
 zoom = Vector2(2, 2)
 position_smoothing_enabled = true
 position_smoothing_speed = 15.0
+
+[node name="BigRabbit" type="AnimatedSprite2D" parent="." unique_id=2106494137]
+texture_filter = 1
+position = Vector2(1360, 98)
+scale = Vector2(1.6750001, 1.675)
+sprite_frames = SubResource("SpriteFrames_1ay4j")
+animation = &"idle"
+flip_h = true
+
+[node name="Trigger-MeetParent" type="Area2D" parent="." unique_id=186253856]
+position = Vector2(912, -128)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Trigger-MeetParent" unique_id=2648568]
+position = Vector2(0, 81.5)
+shape = SubResource("RectangleShape2D_1ay4j")
+
+[node name="Trigger-Stump1" type="Area2D" parent="." unique_id=60850326]
+position = Vector2(1272, -128)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Trigger-Stump1" unique_id=927278380]
+position = Vector2(0, 81.5)
+shape = SubResource("RectangleShape2D_1ay4j")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1586433365]
 
@@ -144,3 +253,6 @@ grow_vertical = 0
 text = "WASD or Left Axis to Move"
 label_settings = SubResource("LabelSettings_mrdad")
 horizontal_alignment = 1
+
+[connection signal="body_entered" from="Trigger-MeetParent" to="." method="trigger_meetparent"]
+[connection signal="body_entered" from="Trigger-Stump1" to="." method="trigger_stump1"]
