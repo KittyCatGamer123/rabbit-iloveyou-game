@@ -33,6 +33,7 @@ var was_on_floor: bool = false
 @export var wall_jump_force: Vector2 = Vector2(800, -400)
 @export var wall_slide_velocity: float = 90.0
 var is_wall_jumping: bool = false
+var walljump_flip_tween: Tween = null
 
 func _ready() -> void:
 	progress_jump.value = 0
@@ -93,8 +94,7 @@ func player_wallmovement() -> void:
 				anim_sprite.flip_h = true
 				previous_direction = 1
 				move_camera_offset(camera_offset)
-				
-				create_tween().tween_property(anim_sprite, "rotation", TAU, 0.5).as_relative()
+				walljump_flip()
 			
 			if rc_right_wall.is_colliding():
 				var inverse_force = Vector2(-wall_jump_force.x, wall_jump_force.y)
@@ -103,13 +103,22 @@ func player_wallmovement() -> void:
 				anim_sprite.flip_h = false
 				previous_direction = -1
 				move_camera_offset(-camera_offset)
-				
-				create_tween().tween_property(anim_sprite, "rotation", -TAU, 0.5).as_relative()
+				walljump_flip()
 
 func has_walljumped() -> void:
 	is_wall_jumping = true
 	await get_tree().create_timer(0.12).timeout
 	is_wall_jumping = false
+
+func walljump_flip():
+	if walljump_flip_tween and walljump_flip_tween.is_valid():
+		walljump_flip_tween.kill()
+	
+	anim_sprite.rotation = 0
+	
+	var target_rotation = anim_sprite.rotation + (TAU * previous_direction)
+	walljump_flip_tween = create_tween()
+	walljump_flip_tween.tween_property(anim_sprite, "rotation", target_rotation, 0.5)
 
 func update_animation(direction: float) -> void:
 	if not is_on_floor():

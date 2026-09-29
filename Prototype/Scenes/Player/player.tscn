@@ -126,7 +126,7 @@ value = 0.5
 show_percentage = false
 
 [node name="Raycasts" type="Node2D" parent="." unique_id=264322128]
-position = Vector2(16, 24)
+position = Vector2(16, 26)
 
 [node name="RightWall" type="RayCast2D" parent="Raycasts" unique_id=815389863]
 target_position = Vector2(18, 0)

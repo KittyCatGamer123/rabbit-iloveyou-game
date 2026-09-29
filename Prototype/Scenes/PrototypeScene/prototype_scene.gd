@@ -1,6 +1,6 @@
 extends Node2D
 
-var cutscene_skip = false
+var cutscene_skip = true
 
 @onready var player: Player = $Player
 @onready var player_cam: Camera2D = $Player/Camera2D
@@ -18,6 +18,7 @@ func _ready() -> void:
 		return
 	
 	$BigRabbit.position = Vector2(1035, 65)
+	$BigRabbit.play("idle")
 	$BigRabbit.flip_h = false
 	message_box.visible = false
 	
@@ -131,6 +132,26 @@ func trigger_stump1(body: Node2D) -> void:
 	await create_tween().tween_property($BigRabbit, "position", Vector2(1155.0, 86), 1).set_ease(Tween.EASE_IN_OUT).finished
 	create_tween().tween_property(player_cam, "offset", Vector2(-25, -55), 0.7).set_ease(Tween.EASE_IN_OUT)
 	await create_tween().tween_property($BigRabbit, "position", Vector2(1360.0, 98.0), 1).set_ease(Tween.EASE_IN_OUT).finished
+	create_tween().tween_property(player_cam, "offset", Vector2(25, -35), 0.7).set_ease(Tween.EASE_IN_OUT)
 	player.anim_sprite.flip_h = true
 	$BigRabbit.play("idle", 1)
+	
 	await get_tree().create_timer(1).timeout
+	$BigRabbit.play("midair", 1)
+	await create_tween().tween_property($BigRabbit, "position", Vector2(1362.0, -94), 0.5).finished
+	await create_tween().tween_property($BigRabbit, "position", Vector2(1371.0, -102), 0.1).finished
+	await create_tween().tween_property($BigRabbit, "position", Vector2(1403.0, -110), 0.1).finished
+	await create_tween().tween_property($BigRabbit, "position", Vector2(1428.0, -94), 0.1).finished
+	create_tween().tween_property(player_cam, "offset", Vector2(30, -70), 0.7).set_ease(Tween.EASE_IN_OUT)
+	await create_tween().tween_property($BigRabbit, "position", Vector2(1478.0, -78), 0.1).finished
+	await create_tween().tween_property($BigRabbit, "position", Vector2(1485.0, -77), 0.1).finished
+	$BigRabbit.flip_h = false
+	$BigRabbit.play("idle", 1)
+	
+	await get_tree().create_timer(1.5).timeout
+	create_tween().tween_property(player_cam, "offset", Vector2(30, -85), 1).set_ease(Tween.EASE_IN_OUT)
+	await message_prompt("\"But I love you this much,\" he said.")
+	await message_prompt("Hmm, that is a lot, thought Little Nutbrown Hare.")
+	message_remove()
+	create_tween().tween_property(player_cam, "offset", Vector2(60, -40), 0.5).set_ease(Tween.EASE_IN_OUT)
+	player.active_cutscene = false
